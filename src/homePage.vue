@@ -20,20 +20,21 @@
     </div>
     <div class="main">
       <div class="content">
-        <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="date" label="全部" @click="getAllInfo">
-          </el-table-column>
-          <el-table-column prop="name" label="精华" @click="">
-          </el-table-column>
-          <el-table-column prop="address" label="分享" @click="">
-          </el-table-column>
-          <el-table-column prop="date" label="问答" @click="">
-          </el-table-column>
-          <el-table-column prop="name" label="招聘" @click="">
-          </el-table-column>
-          <el-table-column prop="address" label="客户端测试" @click="">
-          </el-table-column>
-        </el-table>
+        <ul class="header">
+          <li class="headerList" @click="getAllTopicList">全部</li>
+          <li class="headerList" @click="getGoodList">精华</li>
+          <li class="headerList" @click="getShareList">分享</li>
+          <li class="headerList" @click="getAskList">问答</li>
+          <li class="headerList" @click="getJobList">招聘</li>
+        </ul>
+        <div class="table" v-for="item in tableData">
+          <img class="portrait" @click="this.$router.push({name: ''})" :src="item.author.avatar_url" alt="">
+          <div class="replyVSview">{{ `${item.reply_count}/${item.visit_count}` }}</div>
+          <div class="tab">{{ item.tab }}</div>
+          <div class="title" @click="this.$router.push({name: ''})">{{ item.title }}</div>
+          <img class="replierPortrait" :src="aaa" alt="">
+          <div class="replyTime">{{ }}</div>
+        </div>
         <el-pagination
           layout="prev, pager, next"
           :total="1000">
@@ -213,11 +214,22 @@
 </template>
 
 <script>
+const axios = require('axios');
+const host = 'https://cnodejs.org/api/v1'
 export default {
   name: 'App',
-  data: {
-    inputText: '',
-    tableData: []
+  data () {
+    return{
+      inputText: '',
+      tableData: [],
+      params : {
+        page: 1,
+        limit: 100
+      }
+    }
+  },
+  created () {
+    this.getTopics()
   },
   methods: {
     search () {},
@@ -227,7 +239,48 @@ export default {
     toAboutPage () {},
     toRegisterPage () {},
     toLoginPage () {},
-    getAllInfo () {}
+    getAllInfo () {},
+    getTopics() {
+      axios.get(host+'/topics', {params: this.params})
+      .then(res => {
+          if(res.status === 200) {
+            this.tableData = res.data.data
+            for(let item of this.tableData) {
+              if(item.tab === 'ask'){
+                item.tab = '问答'
+              } else if(item.tab === 'share'){
+                item.tab = '分享'
+              } else if(item.tab === 'job'){
+                item.tab = '招聘'
+              } else {
+                item.tab = '问答'
+              }
+            }
+          }
+        }
+      )
+      .catch(err => console.log(err))
+    },
+    getAllTopicList () {
+      this.getTopics()
+    },
+    getGoodList () {
+      this.params.tab = 'good'
+      this.getTopics()
+    },
+    getShareList () {
+      this.params.tab = 'share'
+      this.getTopics()
+    },
+    getAskList () {
+      this.params.tab = 'ask'
+      this.getTopics()
+    },
+    getJobList () {
+      this.params.tab = 'job'
+      this.getTopics()
+    },
+    
   }
 }
 </script>
@@ -303,6 +356,33 @@ export default {
       display: inline-block;
       padding: 0;
       margin-right: 105px;
+      .header{
+        display: flex;
+        flex-direction: flex-start;
+        list-style: none;
+        padding: 10px;
+        background-color: #f6f6f6;
+        border-radius: 3px 3px 0 0;
+        .headerList {
+          color: #80bd01;
+          margin: 0 10px;
+          background-color: #fff;
+          padding: 3px 4px;
+          border-radius: 3px;
+        }
+      }
+      .table{
+        display: flex;
+        flex-direction: flex-start;
+        border-top: 1px solid f6f6f6;
+        padding: 6px;
+        font-size: 16px;
+        .portrait{
+          width: 30px;
+          height: 30px;
+          margin-right: 6px;
+        }
+      }
     }
     .sidebar{
       float: right;
