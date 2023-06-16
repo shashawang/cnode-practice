@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-14T23:41:10.941Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="uSbosfVsCFltBGU2tFI2" version="21.3.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-16T23:08:04.331Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="vuq2uLwH9w6J8VSO1c4b" version="21.3.8" type="github">
   <diagram name="Page-1" id="e7e014a7-5840-1c2e-5031-d8a46d1fe8dd">
     <mxGraphModel dx="794" dy="438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" background="none" math="0" shadow="0">
       <root>
@@ -143,7 +143,7 @@
           <mxGeometry x="105" y="610" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="4" value="渲染进程" style="swimlane;whiteSpace=wrap" parent="1" vertex="1">
-          <mxGeometry x="724.5" y="70" width="315.5" height="750" as="geometry" />
+          <mxGeometry x="724.5" y="70" width="323.75" height="750" as="geometry" />
         </mxCell>
         <mxCell id="33" value="建立数据管道" style="" parent="4" vertex="1">
           <mxGeometry x="35.5" y="60" width="110" height="50" as="geometry" />
@@ -180,6 +180,9 @@
         </mxCell>
         <mxCell id="9qyhOxkPASkgeIc870OE-33" value="合成" style="" vertex="1" parent="4">
           <mxGeometry x="140" y="490" width="84.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="9qyhOxkPASkgeIc870OE-35" value="纹理上传" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="4">
+          <mxGeometry x="263.75" y="390" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="JjLOKpIpYw-dAJU6bSle-69" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;fillColor=#e51400;strokeColor=#B20000;" parent="1" source="JjLOKpIpYw-dAJU6bSle-65" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -277,13 +280,6 @@
         <mxCell id="g9JfCu6f-47q4hhX-uck-53" value="存至GPU内存" style="" parent="g9JfCu6f-47q4hhX-uck-39" vertex="1">
           <mxGeometry x="12.75" y="480" width="84.5" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="g9JfCu6f-47q4hhX-uck-52" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="g9JfCu6f-47q4hhX-uck-50" target="g9JfCu6f-47q4hhX-uck-51" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="600" y="380" as="sourcePoint" />
-            <mxPoint x="650" y="330" as="targetPoint" />
-            <Array as="points" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="g9JfCu6f-47q4hhX-uck-54" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="560" y="430" width="120" height="60" as="geometry" />
         </mxCell>
@@ -302,6 +298,15 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="1050" y="570" as="sourcePoint" />
             <mxPoint x="960" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9qyhOxkPASkgeIc870OE-34" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;exitX=1.083;exitY=0.533;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.591;entryY=-0.2;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="g9JfCu6f-47q4hhX-uck-49" target="g9JfCu6f-47q4hhX-uck-51">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="800" y="540" as="sourcePoint" />
+            <mxPoint x="850" y="490" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1103" y="486" />
+            </Array>
           </mxGeometry>
         </mxCell>
       </root>
